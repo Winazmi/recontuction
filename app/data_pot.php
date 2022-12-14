@@ -54,7 +54,7 @@
                         <td><?php echo $pot['keterangan']; ?></td>
                         <td>
                           <a onclick="delete_data(<?php echo $pot['no_input']; ?>)" class="btn btn-danger btn-sm"> <i class="fas fa-trash"></i></a>
-                          <a href="index.php?page=edit-data&& no_input=<?php echo $pot['no_input']; ?>" class="btn btn-sm btn-success"> <i class="fas fa-pencil-alt"></i>
+                          <a href="index2.php?page=edit-data&& no_input=<?php echo $pot['no_input']; ?>" class="btn btn-sm btn-success"> <i class="fas fa-pencil-alt"></i>
                           </a>
                         </td>
                       </tr>
@@ -94,80 +94,73 @@
 
 
           <!-- add data 1 -->
-          <!-- <form method="post" action="add/tambah_data.php">
-            <div class="form-row p-2" id="form-row">
-              <div class="col-md-1 flex">
-                <label for="inputtanggal"><img src="dist/img/calendar.png" alt="srcl" height="30" width="30"></label>
-                <input type="date" class="form-control" id="inputtgl" placeholder="date" name="tanggal[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input"><img src="dist/img/a.png" alt="srcl" height="30" width="30"></label>
-                <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="cut_up[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input"><img src="dist/img/b.png" alt="srcl" height="30" width="30"></label>
-                <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="take_out[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input"><img src="dist/img/c.png" alt="srcl" height="30" width="30"></label>
-                <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="CBD[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input"><img src="dist/img/d.png" alt="srcl" height="30" width="30"></label>
-                <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="CSE[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input"><img src="dist/img/e.png" alt="srcl" height="30" width="30"></label>
-                <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="work_b[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input"><img src="dist/img/f.png" alt="srcl" height="30" width="30"></label>
-                <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="IOS[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input"><img src="dist/img/g.png" alt="srcl" height="30" width="30"></label>
-                <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="work_12[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input"><img src="dist/img/h.png" alt="srcl" height="30" width="30"></label>
-                <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="ACDD[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input"><img src="dist/img/i.png" alt="srcl" height="30" width="30"></label>
-                <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="baking[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input"><img src="dist/img/j.png" alt="srcl" height="30" width="30"></label>
-                <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="start_up[]">
-              </div>
-              <div class="col-md-1">
-                <label for="input">Keterangan</label>
-                <textarea type="text" class="form-control" rows="1" height="30" id="input" placeholder="....."
-                  name="keterangan[]"></textarea>
-              </div>
+          <form method="post" action="add/tambah_data.php">
+            <?php
+            date_default_timezone_set('Asia/Jakarta');
+            $dari = date('Y-m-d', strtotime('first day of this month'));
+            $sampai = date('Y-m-d', strtotime('last day of this month'));
+            //$tanggal = date('Y-m-d',strtotime('first day of this month'));
+            ?>
+            <table>
+              <tr>
+                <th><label for="inputtanggal"><img src="dist/img/calendar.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input"><img src="dist/img/a.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input"><img src="dist/img/b.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input"><img src="dist/img/c.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input"><img src="dist/img/d.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input"><img src="dist/img/e.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input"><img src="dist/img/f.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input"><img src="dist/img/g.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input"><img src="dist/img/h.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input"><img src="dist/img/i.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input"><img src="dist/img/j.png" alt="srcl" height="30" width="30"></label></th>
+                <th><label for="input">Keterangan</label></th>
+              </tr>
+              <?php
+              for ($tgl = $dari; $tgl <= $sampai; $tgl++) {
+              ?>
+                <tr>
+                  <td><input type="date" class="form-control" id="inputtgl" value=<?php echo $tgl; ?> placeholder="date" name="tanggal[]"></td>
+                  <td><input type="text" class="form-control" id="input" value=" " placeholder="no.pot" name="cut_up[]"></td>
+                  <td><input type="text" class="form-control" id="input" value=" " placeholder="no.pot" name="take_out[]"></td>
+                  <td><input type="text" class="form-control" id="input" value=" " placeholder="no.pot" name="CBD[]"></td>
+                  <td><input type="text" class="form-control" id="input" value=" " placeholder="no.pot" name="CSE[]"></td>
+                  <td><input type="text" class="form-control" id="input" value=" " placeholder="no.pot" name="work_b[]"></td>
+                  <td><input type="text" class="form-control" id="input" value=" " placeholder="no.pot" name="IOS[]"></td>
+                  <td><input type="text" class="form-control" id="input" value=" " placeholder="no.pot" name="work_12[]"></td>
+                  <td><input type="text" class="form-control" id="input" value=" " placeholder="no.pot" name="ACDD[]"></td>
+                  <td><input type="text" class="form-control" id="input" value=" " placeholder="no.pot" name="baking[]"></td>
+                  <td><input type="text" class="form-control" id="input" value=" " placeholder="no.pot" name="start_up[]"></td>
+                  <td><textarea type="text" class="form-control" rows="1" height="30" id="input" placeholder="....." name="keterangan[]"></textarea></td>
+                </tr>
+              <?php
+              }
+              ?>
+            </table>
+            <!-- <div class="form-row p-2" id="form-row"> -->
 
-            </div>
-            <div class="form-row ajax mt-2" id="add-form ajax">
+            <!-- </div> -->
+            <!-- <div class="form-row ajax mt-2" id="add-form ajax">
 
             </div>
             <div class="row my-2 justify-content-between">
               <div></div>
               <div class="btn btn-primary mr-3" id="button-add">+ Add row</div>
-            </div>
+            </div> -->
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" name="submit" class="btn btn-success"> Simpan </button>
             </div>
-          </form> -->
+          </form>
 
           <!-- add data revisi -->
-          <div class="card-body">
-            <!-- <form method="post" action="add/tambah_data.php"> -->
-            <h5 align="center" class="mt-4 mb-2">Pilih bulan</h5>
+          <!-- <div class="card-body"> -->
+          <!-- <--<form method="post" action="add/tambah_data.php"> -->
+          <!-- <h5 align="center" class="mt-4 mb-2">Pilih bulan</h5>
             <div></div>
             <div class="row">
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
+              <div class="col-lg-3 col-6"> -->
+          <!-- small box
                 <div class="small-box bg-info">
                   <div class="inner">
                     <h3>01</h3>
@@ -178,10 +171,10 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
+              </div> -->
+          <!-- ./col -->
+          <!-- <div class="col-lg-3 col-6">
+                small box
                 <div class="small-box bg-info">
                   <div class="inner">
                     <h3>02</h3>
@@ -192,11 +185,11 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
+              </div> -->
+          <!-- ./col -->
+          <!-- <div class="col-lg-3 col-6"> -->
+          <!-- small box -->
+          <!-- <div class="small-box bg-info">
                   <div class="inner">
                     <h3>03</h3>
                     <p>MARET</p>
@@ -206,11 +199,11 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
+              </div> -->
+          <!-- ./col -->
+          <!-- <div class="col-lg-3 col-6"> -->
+          <!-- small box -->
+          <!-- <div class="small-box bg-info">
                   <div class="inner">
                     <h3>04</h3>
                     <p>APRIL</p>
@@ -220,12 +213,12 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
+              </div> -->
+          <!-- ./col -->
 
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-navy">
+          <!-- <div class="col-lg-3 col-6"> -->
+          <!-- small box -->
+          <!-- <div class="small-box bg-navy">
                   <div class="inner">
                     <h3>05</h3>
                     <p>MEI</p>
@@ -235,12 +228,12 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
+              </div> -->
+          <!-- ./col -->
 
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-navy">
+          <!-- <div class="col-lg-3 col-6"> -->
+          <!-- small box -->
+          <!-- <div class="small-box bg-navy">
                   <div class="inner">
                     <h3>06</h3>
                     <p>JUNI</p>
@@ -250,12 +243,12 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
+              </div> -->
+          <!-- ./col -->
 
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-navy">
+          <!-- <div class="col-lg-3 col-6"> -->
+          <!-- small box -->
+          <!-- <div class="small-box bg-navy">
                   <div class="inner">
                     <h3>07</h3>
                     <p>JULI</p>
@@ -265,12 +258,12 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
-
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-navy">
+              </div> -->
+          <!-- ./col -->
+          <!-- 
+              <div class="col-lg-3 col-6"> -->
+          <!-- small box -->
+          <!-- <div class="small-box bg-navy">
                   <div class="inner">
                     <h3>08</h3>
                     <p>AGUSTUS</p>
@@ -280,12 +273,12 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
+              </div> -->
+          <!-- ./col -->
 
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
+          <!-- <div class="col-lg-3 col-6"> -->
+          <!-- small box -->
+          <!-- <div class="small-box bg-info">
                   <div class="inner">
                     <h3>09</h3>
                     <p>SEPTEMBER</p>
@@ -295,11 +288,11 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
+              </div> -->
+          <!-- ./col -->
+          <!-- <div class="col-lg-3 col-6"> -->
+          <!-- small box -->
+          <!-- <div class="small-box bg-info">
                   <div class="inner">
                     <h3>10</h3>
                     <p>OKTOBER</p>
@@ -309,11 +302,11 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
+              </div> -->
+          <!-- ./col -->
+          <!-- <div class="col-lg-3 col-6"> -->
+          <!-- small box -->
+          <!-- <div class="small-box bg-info">
                   <div class="inner">
                     <h3>11</h3>
                     <p>NOVEMBER</p>
@@ -323,11 +316,11 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
+              </div> -->
+          <!-- ./col -->
+          <!-- <div class="col-lg-3 col-6"> -->
+          <!-- small box -->
+          <!-- <div class="small-box bg-info">
                   <div class="inner">
                     <h3>12</h3>
                     <p>DESEMBER</p>
@@ -337,17 +330,17 @@
                   </div>
                   <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-              </div>
-              <!-- ./col -->
-            </div>
-            <!-- /.col -->
+              </div> -->
+          <!-- ./col -->
+          <!-- </div> -->
+          <!-- /.col -->
 
-            <!-- /.info-box -->
-          </div>
-          <form method="get" action="tambah_data.php">
+          <!-- /.info-box -->
+          <!-- </div>  -->
+          <!-- <form method="get" action="add/tambah_data.php">
             <table id="example2" class="table table-bordered table-hover">
               <thead>
-                <tr>
+                <tr> 
                   <th>TGL</th>
                   <th><img src="dist/img/a.png" alt="srcl" height="30" width="30"></th>
                   <th><img src="dist/img/b.png" alt="srcl" height="30" width="30"></th>
@@ -365,26 +358,26 @@
               </tfoot>
               <tbody>
                 <tr>
-                  <?php
-                  $query = mysqli_query($koneksi, " SELECT * FROM data_pot");
-                  $no = 0;
-                  for ($no = 1; $no < 32; $no++) {
-                  ?>
-                    <th><?php echo $no; ?></th>
-                    <th><input type="text" name="cut_up[]" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="take_out[]" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="CBD[]" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="CSE[]" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="work_b[]" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="IOS[]" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="work_12[]" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="ACDD[]" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="baking[]" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="start_up[]" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="keterangan[]" placeholder="....." style="width:115px"></th>
-                </tr>
-              <?php } ?>
+              
+                  //$query = mysqli_query($koneksi, " SELECT * FROM data_pot");
+                  //$no = 0; -->
 
+
+          <!-- <th><input type="date" name="tanggal" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="cut_up" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="take_out" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="CBD" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="CSE" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="work_b" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="IOS" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="work_12" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="ACDD" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="baking" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="start_up" placeholder="" style="width:115px"></th>
+                    <th><input type="text" name="keterangan" placeholder="....." style="width:115px"></th>
+                </tr> -->
+
+          <!-- 
               </tbody>
               <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -392,10 +385,10 @@
               </div>
             </table>
           </form>
-        </div>
+        </div> -->
 
+        </div>
       </div>
-    </div>
     </div>
 
     <!-- /.modal-content -->
@@ -425,53 +418,53 @@
         })
       };
 
-      // $(document).ready(function() {
-      //   $('#button-add').on('click', function() {
-      //     $('.ajax').append(`<div class="child form-row  mt-2 p-2"> <div class="col-md-1 flex ">
-      //             <input type="date" class="form-control" id="inputtgl" placeholder="date" name="tanggal[]">
-      //           </div>
-      //           <div class="col-md-1">
-      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="cut_up[]">
-      //           </div>
-      //           <div class="col-md-1">
-      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="take_out[]">
-      //           </div>
-      //           <div class="col-md-1">
-      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="CBD[]">
-      //           </div>
-      //           <div class="col-md-1">
-      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="CSE[]">
-      //           </div>
-      //           <div class="col-md-1">
-      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="work_b[]">
-      //           </div>
-      //           <div class="col-md-1">
-      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="IOS[]">
-      //           </div>
-      //           <div class="col-md-1">
-      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="work_12[]">
-      //           </div>
-      //           <div class="col-md-1">
-      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="ACDD[]">
-      //           </div>
-      //           <div class="col-md-1">
-      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="baking[]">
-      //           </div>
-      //           <div class="col-md-1">
-      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="start_up[]">
-      //           </div>
-      //           <div class="col-md-1 mb-1 d-flex justify-content-between">
-      //             <textarea type="text" rows="1" class="form-control mr-1 " id="input" placeholder="....." name="keterangan[]"></textarea>
-      //             <div class="btn btn-sm btn-danger " id="delete-child"><span class="fas fa-trash-alt"></span></div>
-      //           </div>
+      $(document).ready(function() {
+        $('#button-add').on('click', function() {
+          $('.ajax').append(`<div class="child form-row  mt-2 p-2"> <div class="col-md-1 flex ">
+                  <input type="date" class="form-control" id="inputtgl" placeholder="date" name="tanggal[]">
+                </div>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="cut_up[]">
+                </div>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="take_out[]">
+                </div>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="CBD[]">
+                </div>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="CSE[]">
+                </div>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="work_b[]">
+                </div>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="IOS[]">
+                </div>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="work_12[]">
+                </div>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="ACDD[]">
+                </div>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="baking[]">
+                </div>
+                <div class="col-md-1">
+                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="start_up[]">
+                </div>
+                <div class="col-md-1 mb-1 d-flex justify-content-between">
+                  <textarea type="text" rows="1" class="form-control mr-1 " id="input" placeholder="....." name="keterangan[]"></textarea>
+                  <div class="btn btn-sm btn-danger " id="delete-child"><span class="fas fa-trash-alt"></span></div>
+                </div>
 
 
-      //         </div>`)
-      //   });
-      //   $(document).on('click', '#delete-child', function() {
-      //     $(this).parents('.child').remove()
-      //   })
-      // })
+              </div>`)
+        });
+        $(document).on('click', '#delete-child', function() {
+          $(this).parents('.child').remove()
+        })
+      })
     </script>
 
     <div class="col-md-12 d-flex justify-content-between">
