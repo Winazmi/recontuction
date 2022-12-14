@@ -6,12 +6,11 @@
 
     <!-- header -->
     <?php
-    session_start();
-    include('header.php');
-    if (isset($_SESSION['username']) == 'admin') {
-      header("Location: index2.php");
-    }
-    ?>
+    
+     session_start();
+     include('header.php');
+     ?>
+
     <!-- Preloader -->
     <!-- <?php include('preloader.php'); ?> -->
     <!-- navbar -->
@@ -36,8 +35,8 @@
               }
               ?>
 
-            </div>
-           -->
+            </div> -->
+          
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>

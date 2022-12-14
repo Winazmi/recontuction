@@ -6,7 +6,7 @@ $password = $_POST['password'];
 
 $query = mysqli_query($koneksi, " SELECT * FROM tb_user WHERE username ='$username' AND password='$password' ");
 if (mysqli_num_rows($query) == 1) {
-    header('Location: ../app/index.php');
+    header('Location: ../app/index2.php');
     $user = mysqli_fetch_assoc($query);
     $_SESSION['username'] = $user['username'];
     $_SESSION['devisi'] = $user['devisi'];

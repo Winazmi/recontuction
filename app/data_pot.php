@@ -87,6 +87,24 @@
 
           <div class="modal-header">
             <h4 class="modal-title">Tambah Pot Recontruktion</h4>
+            <div class="col-md-8">
+                <form method="POST" action="" class="form-inline">
+                  <div class="col-sm-6">
+                  <select class="form-control mr-2" name="bulan">
+                    <option value="">-</option>
+                    <?php
+
+                    $b = mysqli_query($koneksi, "SELECT DISTINCT date_format(tanggal, '%M %Y') as month_year FROM data_pot");
+                    while ($data = $b->fetch_array()) {
+                      echo "<option>$data[0]</option>";
+                    }
+                    ?>
+                  </select>
+                  <button type="submit" name="submit" class="btn btn-primary">Tampilkan</button>
+                  </div>
+                </form>
+                
+              </div>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -95,6 +113,7 @@
 
           <!-- add data 1 -->
           <form method="post" action="add/tambah_data.php">
+            
             <?php
             date_default_timezone_set('Asia/Jakarta');
             $dari = date('Y-m-d', strtotime('first day of this month'));
