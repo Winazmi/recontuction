@@ -15,6 +15,6 @@
     $keterangan = $_GET['keterangan'];
     $query = mysqli_query($koneksi, "UPDATE data_pot SET tanggal='$tanggal' , cut_up='$cut_up',take_out= '$take_out', CBD='$CBD',CSE='$CSE',work_b='$work_b',
             work_b='$work_b', IOS='$IOS',work_12='$work_12',work_b='$work_b',ACDD='$ACDD',baking='$baking',start_up='$start_up',keterangan='$keterangan' WHERE no_input='$no_input'");
-    header('Location: ../index.php?page=data_pot')
+    header('Location: ../index2.php?page=data_pot')
  ?>
 

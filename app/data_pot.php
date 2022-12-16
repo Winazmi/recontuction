@@ -83,43 +83,27 @@
 
     <div class="modal fade" id="modal-xl">
       <div class="modal-dialog modal-xl" style="max-width:99%!important">
-        <div class="modal-content" style="max-width:99%!important">
+        <div class="modal-content" style="max-width:99%!important; background:white;">
 
           <div class="modal-header">
-            <h4 class="modal-title">Tambah Pot Recontruktion</h4>
+            <h4 class="modal-title" align="center">Tambah Pot Recontruktion</h4>
             <div class="col-md-8">
-                <form method="POST" action="" class="form-inline">
-                  <div class="col-sm-6">
-                  <select class="form-control mr-2" name="bulan">
-                    <option value="">-</option>
-                    <?php
-
-                    $b = mysqli_query($koneksi, "SELECT DISTINCT date_format(tanggal, '%M %Y') as month_year FROM data_pot");
-                    while ($data = $b->fetch_array()) {
-                      echo "<option>$data[0]</option>";
-                    }
-                    ?>
-                  </select>
-                  <button type="submit" name="submit" class="btn btn-primary">Tampilkan</button>
-                  </div>
-                </form>
-                
-              </div>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            </div>
+            <!-- button utk menambahkan bulan atau mengurangi -->
+            <div class="btn btn-primary mr-2" id="button-add"><</div>
+            <div class="btn btn-primary mr-2" id="button-min">></div>
           </div>
-
-
           <!-- add data 1 -->
           <form method="post" action="add/tambah_data.php">
-            
+
             <?php
             date_default_timezone_set('Asia/Jakarta');
-            $dari = date('Y-m-d', strtotime('first day of this month'));
-            $sampai = date('Y-m-d', strtotime('last day of this month'));
-            //$tanggal = date('Y-m-d',strtotime('first day of this month'));
+            // $n untuk uji coba menambahkan dan mengurangi bulan jika + maka akan ke bulan selanjutnya,jika - akan bulan sebelumnya
+            $n = +1;
+            $dari = date('Y-m-d', strtotime("$n month", strtotime('first day of this month')));
+            $sampai = date('Y-m-t', strtotime($dari));
             ?>
+
             <table>
               <tr>
                 <th><label for="inputtanggal"><img src="dist/img/calendar.png" alt="srcl" height="30" width="30"></label></th>
@@ -156,256 +140,11 @@
               }
               ?>
             </table>
-            <!-- <div class="form-row p-2" id="form-row"> -->
-
-            <!-- </div> -->
-            <!-- <div class="form-row ajax mt-2" id="add-form ajax">
-
-            </div>
-            <div class="row my-2 justify-content-between">
-              <div></div>
-              <div class="btn btn-primary mr-3" id="button-add">+ Add row</div>
-            </div> -->
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" name="submit" class="btn btn-success"> Simpan </button>
             </div>
           </form>
-
-          <!-- add data revisi -->
-          <!-- <div class="card-body"> -->
-          <!-- <--<form method="post" action="add/tambah_data.php"> -->
-          <!-- <h5 align="center" class="mt-4 mb-2">Pilih bulan</h5>
-            <div></div>
-            <div class="row">
-              <div class="col-lg-3 col-6"> -->
-          <!-- small box
-                <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>01</h3>
-                    <p>JANUARI</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-          <!-- <div class="col-lg-3 col-6">
-                small box
-                <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>02</h3>
-                    <p>FEBRUARI</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-          <!-- <div class="col-lg-3 col-6"> -->
-          <!-- small box -->
-          <!-- <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>03</h3>
-                    <p>MARET</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-          <!-- <div class="col-lg-3 col-6"> -->
-          <!-- small box -->
-          <!-- <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>04</h3>
-                    <p>APRIL</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-
-          <!-- <div class="col-lg-3 col-6"> -->
-          <!-- small box -->
-          <!-- <div class="small-box bg-navy">
-                  <div class="inner">
-                    <h3>05</h3>
-                    <p>MEI</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-
-          <!-- <div class="col-lg-3 col-6"> -->
-          <!-- small box -->
-          <!-- <div class="small-box bg-navy">
-                  <div class="inner">
-                    <h3>06</h3>
-                    <p>JUNI</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-
-          <!-- <div class="col-lg-3 col-6"> -->
-          <!-- small box -->
-          <!-- <div class="small-box bg-navy">
-                  <div class="inner">
-                    <h3>07</h3>
-                    <p>JULI</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-          <!-- 
-              <div class="col-lg-3 col-6"> -->
-          <!-- small box -->
-          <!-- <div class="small-box bg-navy">
-                  <div class="inner">
-                    <h3>08</h3>
-                    <p>AGUSTUS</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-
-          <!-- <div class="col-lg-3 col-6"> -->
-          <!-- small box -->
-          <!-- <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>09</h3>
-                    <p>SEPTEMBER</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-          <!-- <div class="col-lg-3 col-6"> -->
-          <!-- small box -->
-          <!-- <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>10</h3>
-                    <p>OKTOBER</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-          <!-- <div class="col-lg-3 col-6"> -->
-          <!-- small box -->
-          <!-- <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>11</h3>
-                    <p>NOVEMBER</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-          <!-- <div class="col-lg-3 col-6"> -->
-          <!-- small box -->
-          <!-- <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>12</h3>
-                    <p>DESEMBER</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-calendar"></i>
-                  </div>
-                  <a href="add/table_add.php" class="small-box-footer">Masukan data <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div> -->
-          <!-- ./col -->
-          <!-- </div> -->
-          <!-- /.col -->
-
-          <!-- /.info-box -->
-          <!-- </div>  -->
-          <!-- <form method="get" action="add/tambah_data.php">
-            <table id="example2" class="table table-bordered table-hover">
-              <thead>
-                <tr> 
-                  <th>TGL</th>
-                  <th><img src="dist/img/a.png" alt="srcl" height="30" width="30"></th>
-                  <th><img src="dist/img/b.png" alt="srcl" height="30" width="30"></th>
-                  <th><img src="dist/img/c.png" alt="srcl" height="30" width="30"></th>
-                  <th><img src="dist/img/d.png" alt="srcl" height="30" width="30"></th>
-                  <th><img src="dist/img/e.png" alt="srcl" height="30" width="30"></th>
-                  <th><img src="dist/img/f.png" alt="srcl" height="30" width="30"></th>
-                  <th><img src="dist/img/g.png" alt="srcl" height="30" width="30"></th>
-                  <th><img src="dist/img/h.png" alt="srcl" height="30" width="30"></th>
-                  <th><img src="dist/img/i.png" alt="srcl" height="30" width="30"></th>
-                  <th><img src="dist/img/j.png" alt="srcl" height="30" width="30"></th>
-                  <th>KET.</th>
-                </tr>
-              </thead>
-              </tfoot>
-              <tbody>
-                <tr>
-              
-                  //$query = mysqli_query($koneksi, " SELECT * FROM data_pot");
-                  //$no = 0; -->
-
-
-          <!-- <th><input type="date" name="tanggal" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="cut_up" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="take_out" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="CBD" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="CSE" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="work_b" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="IOS" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="work_12" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="ACDD" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="baking" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="start_up" placeholder="" style="width:115px"></th>
-                    <th><input type="text" name="keterangan" placeholder="....." style="width:115px"></th>
-                </tr> -->
-
-          <!-- 
-              </tbody>
-              <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-success"> Simpan </button>
-              </div>
-            </table>
-          </form>
-        </div> -->
-
         </div>
       </div>
     </div>
@@ -437,56 +176,51 @@
         })
       };
 
-      $(document).ready(function() {
-        $('#button-add').on('click', function() {
-          $('.ajax').append(`<div class="child form-row  mt-2 p-2"> <div class="col-md-1 flex ">
-                  <input type="date" class="form-control" id="inputtgl" placeholder="date" name="tanggal[]">
-                </div>
-                <div class="col-md-1">
-                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="cut_up[]">
-                </div>
-                <div class="col-md-1">
-                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="take_out[]">
-                </div>
-                <div class="col-md-1">
-                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="CBD[]">
-                </div>
-                <div class="col-md-1">
-                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="CSE[]">
-                </div>
-                <div class="col-md-1">
-                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="work_b[]">
-                </div>
-                <div class="col-md-1">
-                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="IOS[]">
-                </div>
-                <div class="col-md-1">
-                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="work_12[]">
-                </div>
-                <div class="col-md-1">
-                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="ACDD[]">
-                </div>
-                <div class="col-md-1">
-                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="baking[]">
-                </div>
-                <div class="col-md-1">
-                  <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="start_up[]">
-                </div>
-                <div class="col-md-1 mb-1 d-flex justify-content-between">
-                  <textarea type="text" rows="1" class="form-control mr-1 " id="input" placeholder="....." name="keterangan[]"></textarea>
-                  <div class="btn btn-sm btn-danger " id="delete-child"><span class="fas fa-trash-alt"></span></div>
-                </div>
+      // $(document).ready(function() {
+      //   $('#button-add').on('click', function() {
+      //     $('.ajax').append(`<div class="child form-row  mt-2 p-2"> <div class="col-md-1 flex ">
+      //             <input type="date" class="form-control" id="inputtgl" placeholder="date" name="tanggal[]">
+      //           </div>
+      //           <div class="col-md-1">
+      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="cut_up[]">
+      //           </div>
+      //           <div class="col-md-1">
+      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="take_out[]">
+      //           </div>
+      //           <div class="col-md-1">
+      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="CBD[]">
+      //           </div>
+      //           <div class="col-md-1">
+      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="CSE[]">
+      //           </div>
+      //           <div class="col-md-1">
+      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="work_b[]">
+      //           </div>
+      //           <div class="col-md-1">
+      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="IOS[]">
+      //           </div>
+      //           <div class="col-md-1">
+      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="work_12[]">
+      //           </div>
+      //           <div class="col-md-1">
+      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="ACDD[]">
+      //           </div>
+      //           <div class="col-md-1">
+      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="baking[]">
+      //           </div>
+      //           <div class="col-md-1">
+      //             <input type="text" class="form-control" id="input" value="-" placeholder="no.pot" name="start_up[]">
+      //           </div>
+      //           <div class="col-md-1 mb-1 d-flex justify-content-between">
+      //             <textarea type="text" rows="1" class="form-control mr-1 " id="input" placeholder="....." name="keterangan[]"></textarea>
+      //             <div class="btn btn-sm btn-danger " id="delete-child"><span class="fas fa-trash-alt"></span></div>
+      //           </div>
 
 
-              </div>`)
-        });
-        $(document).on('click', '#delete-child', function() {
-          $(this).parents('.child').remove()
-        })
-      })
+      //         </div>`)
+      //   });
+      //   $(document).on('click', '#delete-child', function() {
+      //     $(this).parents('.child').remove()
+      //   })
+      // })
     </script>
-
-    <div class="col-md-12 d-flex justify-content-between">
-      <div></div>
-      <div class="btn btn-sm btn-danger" id="delete-child"><span class="fas fa-trash-alt"></span></div>
-    </div>

@@ -22,3 +22,4 @@ for ($i = 0; $i < count($_POST['tanggal']); $i++) {
     VALUES ('$tanggal','$cut_up','$take_out','$CBD','$CSE','$work_b','$IOS','$work_12','$ACDD','$baking','$start_up','$keterangan')");
 }
 header('Location: ../index2.php?page=data_pot');
+?>

@@ -10,7 +10,7 @@
         include('header.php');
         ?>
     <!-- Preloader -->
-    <!-- <?php include('preloader.php'); ?> -->
+    <?php include('preloader.php'); ?>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
     <!-- navbar -->
@@ -33,7 +33,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">SRC POT REDUCTION</h1>
+              <h1 class="m-0">SRC POT RECONSTRUCTION</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">

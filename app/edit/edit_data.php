@@ -6,19 +6,19 @@ $view = mysqli_fetch_array($query);
 
 <section class="conten">
     <div class="container-fluid">
-        <div class="card card-warning">
+        <div class="card card-navy">
             <div class="card-header">
                 <h3 class="card-title">EDIT DATA</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <form method='get' action='add/tambah_data.php'>
+                <form method='get' action='update/update_data.php'>
                     <div class="row">
                         <div class="col-sm-2">
                             <!-- text input -->
                             <div class="form-group">
                                 <label for="inputtanggal"><img src="dist/img/calendar.png" alt="srcl" height="30" width="30"></label>
-                                <input type="date" class="form-control" placeholder="Date" name='tanggal' value="<?php echo $view['tanggal'] ?>">
+                                <input type="date" class="form-control" id="inputtgl" placeholder="Date" name='tanggal' value="<?php echo $view['tanggal'] ?>">
                                 <input type="text" class="form-control" placeholder="no.input" name='no_input' value="<?php echo $view['no_input'] ?>" hidden>
                             </div>
                         </div>

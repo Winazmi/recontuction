@@ -187,7 +187,7 @@ class Layout {
         $preloader.css('height', 0)
         setTimeout(() => {
           $preloader.children().hide()
-        }, 200)
+        }, 10)
       }
     }, this._config.preloadDuration)
   }

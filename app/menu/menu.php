@@ -3,7 +3,7 @@
   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
     <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
     <li class="nav-item">
-      <a href="index.php?page=dashboard" class="nav-link">
+      <a href="index2.php?page=dashboard" class="nav-link">
         <i class="nav-icon fas fa-th"></i>
         <p>
           Dashboard
@@ -27,20 +27,20 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="index.php?page=form_input" class="nav-link">
+          <a href="index2.php?page=not_found.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
             <p>...</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="index.php?page=form_input" class="nav-link">
+          <a href="index2.php?page=not_found.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
             <p>...</p>
           </a>
         </li>
       </ul>
     <li class="nav-item">
-      <a onclick="window.alert('yakin ingin Keluar ? ')" href="logout.php" class="nav-link text-red">
+      <a onclick="window.alert('apakah ingin menutup halaman admin ? ')" href="logout.php" class="nav-link text-red">
         <i class="nav-icon fas fa-power-off "></i>
         <p>
           Logout

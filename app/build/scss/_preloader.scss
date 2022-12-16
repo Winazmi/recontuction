@@ -1,10 +1,10 @@
-//
+
 // Core: Preloader
-//
+
 
 .preloader {
   display: flex;
-  : $main-bg;
+  background-color : $main-bg;
   height: 100vh;
   width: 100%;
   transition: height 200ms linear;
@@ -16,7 +16,7 @@
 
 @include dark-mode () {
   .preloader {
-    : $dark-main-bg;
+    background-color : $dark-main-bg;
     color: $white;
   }
 }

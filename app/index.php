@@ -18,10 +18,10 @@
     <!-- Main Sidebar Container -->
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content">
+    <div class="content navy">
       <!-- Content Header (Page header) -->
       <div class="content-header">
-        <div class="container-fluid">
+         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-12">
               <h1 align="center">SRC POT RECONSTRUCTION</h1>
